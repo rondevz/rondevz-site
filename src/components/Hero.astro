@@ -1,0 +1,34 @@
+---
+import { cn } from "../utils";
+const { class: className } = Astro.props;
+---
+
+<div class={cn("flex justify-center flex-col items-center text-center", className)}>
+	<img
+		src="https://avatars.githubusercontent.com/u/41125008?v=4"
+		alt="Profiel Pic from Github"
+		class="rounded-2xl size-24 mb-4"
+	/>
+	<h1 class="relative text-5xl font-black mb-2.5">
+		Hi, I'm Ronald Pereira
+		<a
+			href="https://github.com/rondevz"
+			target="_blank"
+			class="text-base absolute inset-y-0 -right-20 -translate-y-3 -skew-6 w-full h-full inline-flex items-center justify-end">
+			<span class="hover:text-pink-400 hover:underline transition-colors duration-500"> @rondevz</span>
+		</a>
+	</h1>
+
+	<p class="text-xl text-center mb-8">
+		I'm a Computer Engineer who loves
+		<span class="text-pink-400">Coding</span>,
+		<span class="text-pink-400">Video Games</span>
+		and <span class="text-pink-400">Music</span>
+	</p>
+
+	<p class="text-base text-gray-200 text-center max-w-3xl">
+		Full-stack developer skilled in technologies as: PHP, Laravel, React, Go, Javascript and whatever technology you
+		throw me in. I build efficient, user-focused web/mobile applications and enjoy solving complex problems (that’s
+		why I love Souls series).
+	</p>
+</div>
