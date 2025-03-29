@@ -1,14 +1,19 @@
 ---
+import { Image } from "astro:assets";
 import { cn } from "../utils";
 const { class: className } = Astro.props;
 ---
 
-<div class={cn("flex justify-center flex-col items-center text-center", className)}>
-	<img
+<div class={cn("flex flex-col items-center justify-center w-full h-full", className)}>
+	<Image
 		src="https://avatars.githubusercontent.com/u/41125008?v=4"
-		alt="Profiel Pic from Github"
+		alt="Profile Pic from Github"
 		class="rounded-2xl size-24 mb-4"
+		width={100}
+		height={100}
+		loading="eager"
 	/>
+
 	<h1 class="relative text-5xl font-black mb-2.5">
 		Hi, I'm Ronald Pereira
 		<a
@@ -28,7 +33,6 @@ const { class: className } = Astro.props;
 
 	<p class="text-base text-gray-200 text-center max-w-3xl">
 		Full-stack developer skilled in technologies as: PHP, Laravel, React, Go, Javascript and whatever technology you
-		throw me in. I build efficient, user-focused web/mobile applications and enjoy solving complex problems (that’s
-		why I love Souls series).
+		throw me in. I build efficient, user-focused web/mobile applications and enjoy solving complex problems (Yes, I love Souls games).
 	</p>
 </div>

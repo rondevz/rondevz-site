@@ -6,6 +6,7 @@ import Header from "../components/Header.astro";
 import Footer from "../components/Footer.astro";
 import { SITE_TITLE, SITE_DESCRIPTION } from "../consts";
 import Hero from "../components/Hero.astro";
+import LatestArticles from '../components/home/LatestArticles.astro';
 ---
 
 <!DOCTYPE html>
@@ -13,11 +14,13 @@ import Hero from "../components/Hero.astro";
 	<head>
 		<BaseHead title={SITE_TITLE} description={SITE_DESCRIPTION} />
 	</head>
-	<body class="bg-[#090d0e] min-h-screen w-full mx-auto max-w-screen-lg py-10">
+	<body class="bg-[#090d0e] min-h-screen w-full mx-auto max-w-screen-md py-10">
 		<Header />
-		<main class="text-white w-full h-full">
+		<main class="text-gray-200 w-full h-full">
 			<Hero class="my-52" />
+			<LatestArticles  class="my-52" />
 		</main>
-		<!-- <Footer /> -->
+
+0		<!-- <Footer /> -->
 	</body>
 </html>
