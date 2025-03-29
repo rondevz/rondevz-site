@@ -7,10 +7,10 @@ const allPosts = (await getCollection("blog")).sort((a, b) => b.data.pubDate.val
 const posts = allPosts.slice(0, 10);
 ---
 
-<section class={cn(className)}>
+<section class={cn(className, 'px-4 md:px-0')}>
   <div class="mb-10">
     <h3 class="font-bold mb-1 text-2xl text-center">Latest Articles</h3>
-    <p class="text-center text-base">
+    <p class="text-center text-base px-4 md:px-0">
       Here are my latest entries from my blog. You can find <a href="/blog" class="text-pink-400 underline">all my articles here</a>.
     </p>
   </div>
@@ -21,10 +21,10 @@ const posts = allPosts.slice(0, 10);
         <a href={`/blog/${post.id}`}>
           <div class="mx-5">
           <div class="flex justify-between items-center text-sm font-bold text-pink-400 group-hover:text-pink-500 mb-2">
-            <p class="text-sm truncate">
+            <p class="text-xs md:text-sm truncate">
               {post.data.title}
             </p>
-            <p class="text-xs">
+            <p class="text-xs hidden md:flex">
               [{new Date(post.data.pubDate).toLocaleDateString('en-US', {month: '2-digit', day: '2-digit', year: 'numeric'}).replace(/\//g, '-')}]
             </p>
           </div>

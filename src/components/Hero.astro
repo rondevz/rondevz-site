@@ -14,13 +14,20 @@ const { class: className } = Astro.props;
 		loading="eager"
 	/>
 
-	<h1 class="relative text-5xl font-black mb-2.5">
+	<h1 class="relative text-5xl text-center font-black mb-2.5">
 		Hi, I'm Ronald Pereira
 		<a
 			href="https://github.com/rondevz"
 			target="_blank"
-			class="text-base absolute inset-y-0 -right-20 -translate-y-3 -skew-6 w-full h-full inline-flex items-center justify-end">
+			class="text-base absolute inset-y-0 hidden -right-20 -translate-y-3 -skew-6 w-full h-full md:inline-flex items-center justify-end">
 			<span class="hover:text-pink-400 hover:underline transition-colors duration-500"> @rondevz</span>
+		</a>
+
+		<a
+			href="https://github.com/rondevz"
+			target="_blank"
+			class="text-base absolute inset-0 skew-3 w-full h-full md:inline-flex items-center justify-center -top-10 translate-x-28">
+			<span class="text-pink-400 underline transition-colors duration-500"> @rondevz</span>
 		</a>
 	</h1>
 
@@ -31,7 +38,7 @@ const { class: className } = Astro.props;
 		and <span class="text-pink-400">Music</span>
 	</p>
 
-	<p class="text-base text-gray-200 text-center max-w-3xl">
+	<p class="text-base text-gray-200 text-center max-w-3xl px-8 md:px-0">
 		Full-stack developer skilled in technologies as: PHP, Laravel, React, Go, Javascript and whatever technology you
 		throw me in. I build efficient, user-focused web/mobile applications and enjoy solving complex problems (Yes, I love Souls games).
 	</p>
