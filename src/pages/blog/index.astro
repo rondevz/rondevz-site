@@ -1,10 +1,10 @@
 ---
 import BaseHead from "../../components/BaseHead.astro";
 import Header from "../../components/Header.astro";
+import Footer from "../../components/Footer.astro";
+
 import { SITE_TITLE, SITE_DESCRIPTION } from "../../consts";
 import { getCollection } from "astro:content";
-import Hero from "../../components/Hero.astro";
-import LatestArticles from "../../components/home/LatestArticles.astro";
 
 const posts = (await getCollection("blog")).sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf());
 ---
@@ -17,10 +17,8 @@ const posts = (await getCollection("blog")).sort((a, b) => b.data.pubDate.valueO
 	<body class="bg-[#090d0e] min-h-screen w-full mx-auto max-w-screen-md py-10">
 		<Header />
 		<main class="text-gray-200 w-full h-full">
-			<Hero class="mt-32 mb-28 lg:my-52 overflow-x-hidden" />
-			<LatestArticles class="my-0" />
+			
 		</main>
-
-0		<!-- <Footer /> -->
+		<Footer />
 	</body>
 </html>
