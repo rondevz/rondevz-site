@@ -1,35 +1,40 @@
 ---
 import { cn } from '../../utils';
-const { className } = Astro.props;
+const { class: className } = Astro.props;
 import { getCollection } from "astro:content";
 
 const allPosts = (await getCollection("blog")).sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf());
 const posts = allPosts.slice(0, 10);
 ---
 
-<section class={cn(className, 'px-4 md:px-0')}>
+<section class={cn(className, 'p-4 md:px-0')}>
   <div class="mb-10">
-    <h3 class="font-bold mb-1 text-2xl text-center">Latest Articles</h3>
+    <h3 class="font-bold mb-1 text-2xl text-center"> <span class="text-teal-500 font-code">> </span>Latest Articles</h3>
     <p class="text-center text-base px-4 md:px-0">
-      Here are my latest entries from my blog. You can find <a href="/blog" class="text-pink-400 underline">all my articles here</a>.
+      Here are my latest entries from my blog. You can find <a href="/blog" class="text-pink-400 underline outline-pink-400">all my articles here</a>.
     </p>
   </div>
 
-  <div class="rounded-3xl bg-gradient-to-t from-gray-950 to-gray-900 h-full w-full border border-gray-500">
+  <div class="rounded-3xl bg-gradient-to-t from-gray-950 to-gray-900 h-full w-full border border-pink-500 shadow-pink-500 shadow-md">
     {posts.map((post) => (
-      <div class="py-6 font-code border-y border-gray-700 first:border-t-0 last:border-b-0 group">
+       <div class="py-6 font-code border-y border-gray-700 first:border-t-0 last:border-b-0 group">
         <a href={`/blog/${post.id}`}>
-          <div class="mx-5">
+          <div class="mx-4 md:mx-5">
           <div class="flex justify-between items-center text-sm font-bold text-pink-400 group-hover:text-pink-500 mb-2">
-            <p class="text-xs md:text-sm truncate">
-              {post.data.title}
+            <p class="text-xs truncate">
+              ~/blog/{post.id}
             </p>
             <p class="text-xs hidden md:flex">
               [{new Date(post.data.pubDate).toLocaleDateString('en-US', {month: '2-digit', day: '2-digit', year: 'numeric'}).replace(/\//g, '-')}]
             </p>
           </div>
-          <p class="text-xs tracking-wide text-gray-100 group-hover:text-gray-300 font-semibold max-w-xl flex">
-            <span class="truncate">> git commit -a "{post.data.description}</span><span>"</span>
+          <p class="text-xs tracking-wide text-gray-100 group-hover:text-gray-300 font-semibold flex">
+            <span class="line-clamp-2 decoration-sky-300">
+              <span class="text-teal-500">> </span> 
+              <span class="text-amber-500">git </span>commit
+              <span class="text-purple-400">-a </span>
+              <span class="text-sky-300">"{post.data.description}</span><span>"</span>
+            </span>
           </p>
         </div>    
         </a>    
