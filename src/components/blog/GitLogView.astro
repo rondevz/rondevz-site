@@ -20,15 +20,15 @@ function getRelativeTimeString(dateString: string | Date): string {
 
 <div class="w-full py-6 font-mono text-sm">
   <div class="flex items-center gap-1 mb-6">
-    <div class="flex h-4 w-4 items-center mr-1">
-      <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16" class="fill-current text-pink-500">
+    <div class="flex size-4 md:size-6 items-center mr-1">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" class="fill-current text-pink-500">
         <path d="M15.698 7.287 8.712.302a1.03 1.03 0 0 0-1.457 0l-1.45 1.45 1.84 1.84a1.223 1.223 0 0 1 1.55 1.56l1.773 1.774a1.224 1.224 0 0 1 1.267 2.025 1.226 1.226 0 0 1-2.002-1.334L8.58 5.963v4.353a1.226 1.226 0 1 1-1.008-.036V5.887a1.226 1.226 0 0 1-.666-1.608L5.093 2.465l-4.79 4.79a1.03 1.03 0 0 0 0 1.457l6.986 6.986a1.03 1.03 0 0 0 1.457 0l6.953-6.953a1.031 1.031 0 0 0 0-1.457"></path>
       </svg>
     </div>
-    <div class="px-2 py-0.5 text-xs bg-pink-500 rounded-md text-white mr-1">
+    <div class="px-2 py-0.5 text-xs md:text-base bg-pink-500 rounded-md text-white mr-1">
       main
     </div>
-    <div class="px-2 py-0.5 text-xs bg-gray-800 rounded-md text-white">
+    <div class="px-2 py-0.5 text-xs md:text-base bg-gray-800 rounded-md text-white">
       origin
     </div>
   </div>
@@ -37,24 +37,24 @@ function getRelativeTimeString(dateString: string | Date): string {
     {posts.map((post, index) => (
         <a href={`/blog/${post.id}`}>
             <div class="flex mb-3 relative">
-                    {index < posts.length - 1 && (
-                <div class="absolute left-[9px] top-6 bottom-0 w-0.5 bg-pink-400"></div>
+                {index < posts.length - 1 && (
+                  <div class="absolute left-[15px] top-8 z-20 bottom-0 w-0.5 bg-pink-400"></div>
                 )}
                 
-                <div class={`rounded-full h-[18px] w-[18px] flex items-center justify-center z-10 mr-3 ${index === 0 ? 'bg-pink-500' : 'bg-gray-700 border border-pink-500'}`}>
+                <div class={`rounded-full size-8 flex items-center justify-center z-10 mr-3 ${index === 0 ? 'bg-pink-500 shadow-md shadow-pink-500' : 'bg-gray-950 border border-pink-900'}`}>
                 {index === 0 ? 
-                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-[10px] h-[10px] text-white">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="size-5 text-white">
                     <path d="M11.644 1.59a.75.75 0 01.712 0l9.75 5.25a.75.75 0 010 1.32l-9.75 5.25a.75.75 0 01-.712 0l-9.75-5.25a.75.75 0 010-1.32l9.75-5.25z" />
                     <path d="M3.265 10.602l7.668 4.129a2.25 2.25 0 002.134 0l7.668-4.13 1.37.739a.75.75 0 010 1.32l-9.75 5.25a.75.75 0 01-.71 0l-9.75-5.25a.75.75 0 010-1.32l1.37-.738z" />
                     <path d="M10.933 19.231l-7.668-4.13-1.37.739a.75.75 0 000 1.32l9.75 5.25c.221.12.489.12.71 0l9.75-5.25a.75.75 0 000-1.32l-1.37-.738-7.668 4.13a2.25 2.25 0 01-2.134-.001z" />
                     </svg> :
-                    <div class="w-[6px] h-[6px] bg-pink-400 rounded-full"></div>
+                    <div class="size-3 bg-pink-700 rounded-full"></div>
                 }
                 </div>
                 
-                <div class={`flex-1 border font-code cursor-pointer 'bg-gray-800 border-pink-400 hover:border-pink-500 shadow shadow-pink-400 rounded-xl px-3 py-3`}>
+                <div class={`flex-1 border font-code cursor-pointer border-pink-900 hover:border-pink-500 hover:shadow shadow-pink-400 rounded-xl px-3 py-3`}>
                     <div class="flex items-center gap-1 mb-3">
-                        <span class={`text-xs rounded-sm px-1.5 py-0.5 bg-teal-700 text-white`}>{post.data.tag}</span>
+                        <span class={`text-xs rounded-sm text-teal-500`}>#{post.data.tag}</span>
                         <span class="text-gray-400 text-xs ml-1">{new Date(post.data.pubDate).toLocaleDateString('en-US', {month: 'short', day: 'numeric'})}</span>
                         <span class="text-gray-500 text-xs">{new Date(post.data.pubDate).getFullYear()}</span>
                     </div>
