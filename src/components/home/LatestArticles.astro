@@ -1,10 +1,11 @@
 ---
 import { cn } from '../../utils';
+import { getTagColor } from '../../utils/tagStyles';
 const { class: className } = Astro.props;
 import { getCollection } from "astro:content";
 
 const allPosts = (await getCollection("blog")).sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf());
-const posts = allPosts.slice(0, 10);
+const posts = allPosts.slice(0, 4);
 ---
 
 <section class={cn(className, 'p-4 md:px-0')}>
@@ -15,30 +16,57 @@ const posts = allPosts.slice(0, 10);
     </p>
   </div>
 
-  <div class="rounded-3xl bg-gradient-to-t from-gray-950 to-gray-900 h-full w-full border border-pink-500 shadow-pink-500 shadow-md">
+  <div class="grid grid-cols-1 gap-6">
     {posts.map((post) => (
-       <div class="py-6 font-code border-y border-gray-700 first:border-t-0 last:border-b-0 group">
-        <a href={`/blog/${post.id}`}>
-          <div class="mx-4 md:mx-5">
-          <div class="flex justify-between items-center text-sm font-bold text-pink-400 group-hover:text-pink-500 mb-2">
-            <p class="text-xs truncate">
-              ~/blog/{post.id}
-            </p>
-            <p class="text-xs hidden md:flex">
-              [{new Date(post.data.pubDate).toLocaleDateString('en-US', {month: '2-digit', day: '2-digit', year: 'numeric'}).replace(/\//g, '-')}]
-            </p>
+      <a href={`/blog/${post.id}`} class="group">
+        <div class="h-full rounded-2xl bg-gradient-to-br from-gray-900 to-gray-950 border border-pink-500/50 hover:border-pink-500 shadow-sm hover:shadow-md hover:shadow-pink-500/30 transition-all duration-300 overflow-hidden relative">
+          <div class="absolute top-0 left-0 bg-teal-500 text-xs font-bold py-1 px-3 rounded-br-lg text-black font-code">
+            {new Date(post.data.pubDate).toLocaleDateString('en-US', {month: 'short', day: 'numeric', year: 'numeric'})}
           </div>
-          <p class="text-xs tracking-wide text-gray-100 group-hover:text-gray-300 font-semibold flex">
-            <span class="line-clamp-2 decoration-sky-300">
-              <span class="text-teal-500">> </span> 
-              <span class="text-amber-500">git </span>commit
-              <span class="text-purple-400">-a </span>
-              <span class="text-sky-300">"{post.data.description}</span><span>"</span>
-            </span>
-          </p>
-        </div>    
-        </a>    
-      </div>
+          
+          <div class="pt-10 pb-6 px-5">
+            <div class="w-full h-1 bg-gradient-to-r from-pink-500 via-purple-500 to-teal-500 mb-4 rounded-full"></div>
+            
+            <div class="flex flex-col items-start justify-between mb-2">
+              <h4 class="text-lg font-bold text-white group-hover:text-pink-400 transition-colors">
+                <span class="text-teal-500 font-code">~/</span>{post.id}
+              </h4>
+              
+              {post.data.tag && (
+                <span class={`text-xs font-code ${getTagColor(post.data.tag)}`}>
+                  #{post.data.tag}
+                </span>
+              )}
+            </div>
+            
+            <div class="terminal-output bg-black/50 rounded-lg p-3 my-2 font-code text-sm">
+              <div class="flex items-center">
+                <span class="text-teal-500 mr-2">&gt;</span>
+                <span class="text-amber-500">cat</span>
+                <span class="text-white ml-2">description.md</span>
+              </div>
+              <p class="text-gray-100 mt-2 line-clamp-2">
+                {post.data.description}
+              </p>
+            </div>
+            
+            <div class="mt-4 flex justify-between items-center">
+              <div class="text-xs py-1 px-3 bg-pink-500/10 text-pink-400 rounded-full font-code group-hover:bg-pink-500/20 transition-colors">
+                Read article →
+              </div>
+            </div>
+          </div>
+        </div>
+      </a>
     ))}
+  </div>
+  
+  <div class="text-center mt-8">
+    <a href="/blog" class="inline-flex items-center py-2 px-4 bg-pink-500/10 text-pink-400 rounded-full font-code hover:bg-pink-500/20 transition-colors font-semibold text-sm">
+      View all articles
+      <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 ml-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6" />
+      </svg>
+    </a>
   </div>
 </section>

@@ -1,4 +1,6 @@
 ---
+import { getTagColor } from '../../utils/tagStyles';
+
 interface Props {
   posts: any[];
 }
@@ -54,7 +56,7 @@ function getRelativeTimeString(dateString: string | Date): string {
                 
                 <div class={`flex-1 border font-code cursor-pointer border-gray-800 hover:border-pink-500 hover:shadow shadow-pink-400 rounded-xl px-3 py-3`}>
                     <div class="flex items-center gap-1 mb-3">
-                        <span class={`text-xs rounded-sm text-pink-400`}>#{post.data.tag}</span>
+                        <span class={`text-xs rounded-sm ${getTagColor(post.data.tag)}`}>#{post.data.tag}</span>
                         <span class="text-gray-400 text-xs ml-1">{new Date(post.data.pubDate).toLocaleDateString('en-US', {month: 'short', day: 'numeric'})}</span>
                         <span class="text-gray-500 text-xs">{new Date(post.data.pubDate).getFullYear()}</span>
                     </div>
