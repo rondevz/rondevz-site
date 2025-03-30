@@ -1,26 +1,14 @@
 ---
 import "../styles/global.css";
 
-import BaseHead from "../components/BaseHead.astro";
-import Header from "../components/Header.astro";
-import Footer from "../components/Footer.astro";
-import { SITE_TITLE, SITE_DESCRIPTION } from "../consts";
 import Hero from "../components/Hero.astro";
 import LatestArticles from '../components/home/LatestArticles.astro';
+import Layout from "../layouts/Layout.astro";
 ---
 
-<!DOCTYPE html>
-<html lang="en">
-	<head>
-		<BaseHead title={SITE_TITLE} description={SITE_DESCRIPTION} />
-	</head>
-	<body class="bg-[#090d0e] min-h-screen w-full mx-auto max-w-screen-md py-10">
-		<Header />
-		<main class="text-gray-200 w-full h-full overflow-x-hidden">
-			<Hero class="mt-32 mb-36 lg:mt-52 lg:mb-40" />
-			<LatestArticles class="mb-36 lg:mb-40" />
-		</main>
-
-		<Footer class="mb-12"/>
-	</body>
-</html>
+<Layout>
+	<main class="text-gray-200 w-full h-full overflow-x-hidden">
+		<Hero class="mt-28 mb-36 lg:mt-52 lg:mb-40" />
+		<LatestArticles class="mb-36 lg:mb-40" />
+	</main>
+</Layout>
