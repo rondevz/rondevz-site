@@ -1,4 +1,6 @@
 @import "tailwindcss";
+@plugin "@tailwindcss/typography";
+@config "./tailwind.config.js";
 
 @font-face {
 	font-family: "Fira Code";
