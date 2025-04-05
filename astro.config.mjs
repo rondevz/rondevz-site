@@ -9,7 +9,7 @@ import umami from "@yeskunall/astro-umami";
 // https://astro.build/config
 export default defineConfig({
 	site: "https://example.com",
-	integrations: [mdx(), sitemap(), react(), umami({ id: import.meta.env.UNAMI_ID })],
+	integrations: [mdx(), sitemap(), react(), umami({ id: "6ff2ee5b-612b-4915-8953-aabb0f0f5668" })],
 	vite: {
 		plugins: [tailwindcss()],
 	},
