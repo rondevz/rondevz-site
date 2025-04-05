@@ -11,7 +11,7 @@ const { title, description, pubDate, updatedDate, heroImage } = Astro.props;
 	<div class="mb-12 rounded-md overflow-hidden shadow-md shadow-pink-500">
 		{heroImage && <img width={1020} height={510} src={heroImage} alt="" />}
 	</div>
-	<div class="prose prose-pink prose-invert mx-auto">
+	<div class="prose prose-pink prose-invert mx-auto prose-kbd:bg-pink-800">
 		<div>
 			<div class="date">
 				<FormattedDate date={pubDate} />
